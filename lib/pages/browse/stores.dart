@@ -35,8 +35,10 @@ class _StoresState extends State<Stores> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xff504944),
-              Color(0xffA28E8F),
+              // Color(0xff504944),
+              // Color(0xffA28E8F),
+              Colors.blueGrey,
+              Colors.blueGrey.shade200,
             ],
           ),
         ),
@@ -101,6 +103,9 @@ class _StoresState extends State<Stores> {
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 ListView.builder(
                   itemCount: 5,

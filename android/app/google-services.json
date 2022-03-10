@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079936396883",
+    "project_id": "fixmycar-9a962",
+    "storage_bucket": "fixmycar-9a962.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079936396883:android:9ada5431fc7e640e44e0a6",
+        "android_client_info": {
+          "package_name": "co.dj.fixmycar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079936396883-47d1ebud7vvgvuti7hpibk1o9bicl4u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjzscRKmdl-9JtzsNyDUg0MH42RpVt-ZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079936396883-47d1ebud7vvgvuti7hpibk1o9bicl4u7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

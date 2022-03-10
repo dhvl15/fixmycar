@@ -6,14 +6,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AnimalCard extends StatelessWidget {
   final String heroTag;
   final String backgroundurl, foregroundurl;
-  final String title, subtitle;
+  final String title,title2, subtitle;
+  final String type;
 
   const AnimalCard(
       {Key key,
+      this.title2,
       this.heroTag,
       this.backgroundurl,
       this.foregroundurl,
       this.subtitle,
+      this.type,
       this.title})
       : super(key: key);
 
@@ -37,7 +40,8 @@ class AnimalCard extends StatelessWidget {
             width: ScreenUtil.instance.setWidth(327),
             margin: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(20)),
             decoration: BoxDecoration(
-                color: Color(0xFF9C9288),
+                color: Colors.blueGrey.shade200,
+                // Color(0xFF9C9288),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.black.withOpacity(0.3),
@@ -70,18 +74,30 @@ class AnimalCard extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment.bottomLeft,
+                          alignment: Alignment.topLeft,
                           child: Padding(
                             padding: EdgeInsets.only(
                                 left: ScreenUtil.instance.setWidth(16),
                                 right: ScreenUtil.instance.setWidth(16),
-                                bottom: ScreenUtil.instance.setHeight(35)),
-                            child: Text(
-                              title,
-                              style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(16),
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                top: ScreenUtil.instance.setHeight(35)),
+                            child: Column(
+                              children: [
+                                Text(
+                                  title,
+                                  style: TextStyle(
+                                      fontSize: ScreenUtil.instance.setSp(20),
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                Text(
+                                  subtitle,
+                                  style: TextStyle(
+                                      fontSize: ScreenUtil.instance.setSp(12),
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+
+                              ],
                             ),
                           ),
                         ),
@@ -93,7 +109,7 @@ class AnimalCard extends StatelessWidget {
                                 right: ScreenUtil.instance.setWidth(16),
                                 bottom: ScreenUtil.instance.setHeight(18)),
                             child: Text(
-                              subtitle ?? "",
+                              title2 ?? "",
                               style: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(12),
                                   fontWeight: FontWeight.bold,
@@ -101,28 +117,28 @@ class AnimalCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Positioned(
-                            left: ScreenUtil.instance.setWidth(80),
-                            top: ScreenUtil.instance.setWidth(80),
-                            child: Container(
-                              height: ScreenUtil.instance.setWidth(40),
-                              width: ScreenUtil.instance.setWidth(40),
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.1),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: Color(0xFFFDCD00), width: 0.2)),
-                              child: Container(
-                                height: ScreenUtil.instance.setWidth(5),
-                                width: ScreenUtil.instance.setWidth(5),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFFDCD00),
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                            ))
+                        // Positioned(
+                        //     left: ScreenUtil.instance.setWidth(80),
+                        //     top: ScreenUtil.instance.setWidth(80),
+                        //     child: Container(
+                        //       height: ScreenUtil.instance.setWidth(40),
+                        //       width: ScreenUtil.instance.setWidth(40),
+                        //       alignment: Alignment.center,
+                        //       decoration: BoxDecoration(
+                        //           color: Colors.white.withOpacity(0.1),
+                        //           shape: BoxShape.circle,
+                        //           border: Border.all(
+                        //               color: Color(0xFFFDCD00), width: 0.2)),
+                        //       child: Container(
+                        //         height: ScreenUtil.instance.setWidth(5),
+                        //         width: ScreenUtil.instance.setWidth(5),
+                        //         alignment: Alignment.center,
+                        //         decoration: BoxDecoration(
+                        //           color: Color(0xFFFDCD00),
+                        //           shape: BoxShape.circle,
+                        //         ),
+                        //       ),
+                        //     ))
                       ],
                     ),
                   ),
@@ -160,6 +176,24 @@ class AnimalCard extends StatelessWidget {
                     ),
                   ),
                 )
+                // Positioned(
+                //   top: 20,
+                //   right: 0,
+                //   width: ScreenUtil.instance.setWidth(220),
+                //   child: Hero(
+                //     tag: heroTag,
+                //     child: CircleAvatar(
+                //       radius: 80,
+                //       foregroundImage: AssetImage(
+                //         //'asset/animal/humingbird.png',
+                //         foregroundurl,
+                //         //fit: BoxFit.cover,
+                //         //height: 100,
+                //         //width: 100,
+                //       ),
+                //     ),
+                //   ),
+                // )
               ],
             )),
       ),
