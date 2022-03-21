@@ -1,22 +1,25 @@
 import 'package:fix_my_car/pages/detail_page.dart';
+import 'package:fix_my_car/services/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimalCard extends StatelessWidget {
+  final String uid;
   final String heroTag;
   final String backgroundurl, foregroundurl;
   final String title,title2, subtitle;
-  final String type;
+  final String id;
 
   const AnimalCard(
       {Key key,
       this.title2,
+      this.uid,
       this.heroTag,
       this.backgroundurl,
       this.foregroundurl,
       this.subtitle,
-      this.type,
+      this.id,
       this.title})
       : super(key: key);
 
@@ -143,24 +146,7 @@ class AnimalCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    height: ScreenUtil.instance.setHeight(50),
-                    width: ScreenUtil.instance.setWidth(70),
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(20),
-                            topLeft: Radius.circular(20))),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      size: ScreenUtil.instance.setWidth(14),
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                
                 Positioned(
                   top: 0,
                   right: 0,
@@ -175,25 +161,51 @@ class AnimalCard extends StatelessWidget {
                       //width: 100,
                     ),
                   ),
-                )
-                // Positioned(
-                //   top: 20,
-                //   right: 0,
-                //   width: ScreenUtil.instance.setWidth(220),
-                //   child: Hero(
-                //     tag: heroTag,
-                //     child: CircleAvatar(
-                //       radius: 80,
-                //       foregroundImage: AssetImage(
-                //         //'asset/animal/humingbird.png',
-                //         foregroundurl,
-                //         //fit: BoxFit.cover,
-                //         //height: 100,
-                //         //width: 100,
-                //       ),
-                //     ),
-                //   ),
-                // )
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Container(
+                      //   height: ScreenUtil.instance.setHeight(50),
+                      //   width: ScreenUtil.instance.setWidth(70),
+                      //   decoration: BoxDecoration(
+                      //       //color: Colors.white.withOpacity(0.2),
+                      //       // borderRadius: BorderRadius.only(
+                      //       //     bottomRight: Radius.circular(20),
+                      //       //     topLeft: Radius.circular(20))
+                      //       ),
+                      //   alignment: Alignment.center,
+                      //   child: IconButton(
+                      //     icon : Icon(Icons.edit,
+                      //     size: ScreenUtil.instance.setWidth(28),
+                      //     color: Colors.lightBlue),
+                      //     onPressed: (){},
+                      //   ),
+                      // ),
+                      Container(
+                        height: ScreenUtil.instance.setHeight(50),
+                        width: ScreenUtil.instance.setWidth(70),
+                        decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.3),
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomLeft: Radius.circular(20)
+                                )),
+                        alignment: Alignment.center,
+                        child: IconButton(
+                          icon : Icon(Icons.delete_forever,
+                          size: ScreenUtil.instance.setWidth(28),
+                          color: Colors.red,),
+                          onPressed: (){
+                            DatabaseService(uid: uid).deleteData(id: id);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             )),
       ),

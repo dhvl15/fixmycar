@@ -24,9 +24,10 @@ class _CarListState extends State<CarList> {
       itemCount: cars.length,
       itemBuilder: (context, index) {
         return AnimalCard(
+          uid : _user.uid,
           heroTag: index.toString(),
           title: cars[index].modelName,
-          type: "car",
+          id: cars[index].id,
           title2: cars[index].number,
           subtitle: cars[index].brand,
           foregroundurl: "asset/images/car.png",

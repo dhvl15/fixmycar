@@ -17,7 +17,6 @@ class _StoresState extends State<Stores> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     activeClassIndex = 0;
     activeMenuIcon = Icons.home;

@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
   int activeClassIndex;
   IconData activeMenuIcon;
   int itemCount;
-  List<String> listCategory = ["My cars", "Services"];
+  List<String> listCategory = ["My cars"];
   List<IconData> listIcon = [Icons.work, Icons.apps, Icons.home];
   final AuthService _auth = AuthService();
   MyUser currentUser;
