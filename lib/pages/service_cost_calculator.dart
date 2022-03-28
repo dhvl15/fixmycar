@@ -46,6 +46,7 @@ class _ServiceCostCalculatorState extends State<ServiceCostCalculator> {
             setState(() {
               _cost = calculate();
             });
+            dialog(context);
           },
           label: Text("calculate"),
         ),
@@ -263,7 +264,7 @@ class _ServiceCostCalculatorState extends State<ServiceCostCalculator> {
                               dynamic item = _serviceType.contains(_serviceTypeList[0])  ? _services[index]: _parts[index];
                               //print(item.toString());
                               return CheckboxListTile(
-                                secondary: _cost != null ? Text(item['cost'].toString()) : null,
+                                //secondary: _cost != null ? Text(item['cost'].toString()) : null,
                                 title: Text(item['label'] ?? ""),
                                 subtitle: _serviceType == _serviceTypeList[0] ? Text(item["parts"]) : null,
                                 value: _selectedService.contains(item), 
@@ -304,5 +305,60 @@ class _ServiceCostCalculatorState extends State<ServiceCostCalculator> {
     print(price);
     return price;
   }
+
+
+  void dialog(BuildContext context)async {
+    
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Total service cost"),
+            content: Container(
+              width: double.maxFinite,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(child: _buildListView()),
+                  ],
+              ),
+            ),
+            actions: [
+              Text("Total : "+_cost.toString()),
+              TextButton(onPressed: (){Navigator.pop(context);}, child: Text('cancle')),
+            ],
+            actionsAlignment: MainAxisAlignment.spaceBetween,
+          );
+        });
+  }
+
+  Widget _buildListView() {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: _selectedService.length + 1,
+      //separatorBuilder: (ctx, i) => Divider(height: 0),
+      itemBuilder: (context, index) {
+        if (index<_selectedService.length) {
+          final item = _selectedService[index];
+          return ListTile(
+              title: Text(
+                item["label"],
+                style: TextStyle(color: Colors.black),
+              ),
+              subtitle: Text(item["cost"].toString()),
+              
+              );
+        }else{
+          return ListTile(
+              subtitle: Text(
+                "additional taxes applicable*",
+              ),
+              );
+          
+        }
+      },
+    );
+  }
+
   
 }
