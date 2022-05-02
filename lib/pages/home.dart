@@ -6,10 +6,7 @@ import 'package:fix_my_car/services/FadeAnimation.dart';
 import 'package:fix_my_car/services/auth.dart';
 import 'package:fix_my_car/services/database.dart';
 import 'package:fix_my_car/widgets/carList.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

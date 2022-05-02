@@ -1,6 +1,4 @@
-import 'package:fix_my_car/pages/detail_page.dart';
 import 'package:fix_my_car/services/database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

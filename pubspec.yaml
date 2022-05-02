@@ -36,6 +36,7 @@ dependencies:
   simple_animations: ^1.3.4
   google_maps_flutter:
   url_launcher: ^6.0.20
+  geolocator: ^8.0.0
 
 dev_dependencies:
   flutter_test:

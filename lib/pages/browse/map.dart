@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fix_my_car/services/location.dart';
+
 class MapPage extends StatefulWidget {
   @override
   _MapPageState createState() => _MapPageState();
@@ -75,10 +78,26 @@ class _MapPageState extends State<MapPage> {
     _controller.complete(controller);
   }
 
+  void getCurrentLocation()async{
+    Position position = await LocationService().determinePosition().catchError((e){print(e.toString());});
+    setState(() {
+      _markers.add(Marker(
+        // This marker id can be anything that uniquely identifies each marker.
+        markerId: MarkerId(LatLng(position.latitude,position.longitude).toString()),
+        position: LatLng(position.latitude,position.longitude),
+        infoWindow: InfoWindow(
+          title: 'my location',
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      ));
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     getMarkers();
+    getCurrentLocation();
   }
 
   @override
